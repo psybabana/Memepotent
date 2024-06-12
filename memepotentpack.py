@@ -167,7 +167,7 @@ def main():
 
         # Thanking the user and asking if they wanna save their answers
         
-        save_answers = get_yes_no_input("Would you like to save your answers? (yes/no): ")
+        save_answers = get_yes_no_input("Thank you so much for your time! Would you like to save your answers? (yes/no): ")
         if save_answers:
             save_survey(all_answers)
         else:
@@ -177,3 +177,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
