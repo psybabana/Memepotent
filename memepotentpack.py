@@ -41,9 +41,9 @@ def save_survey(all_answers, file_name="Memepotent Research Survey Answers.csv")
 def get_yes_no_input(prompt):
     while True:
         response = input(prompt).strip().lower()
-        if response in ['yes', 'definitely', 'appsolootly', 'absolutely', 'certainly', 'most certainly', 'yes please', 'please', 'sure', 'ya', 'ye', 'yaas', 'yeye', 'yee', 'y']:
+        if response in ['yes', 'sure', 'ya', 'ye', 'y']:
             return True
-        elif response in ['no', 'nah', 'nou', 'na', 'naa', 'naur', 'n']:
+        elif response in ['no', 'nah', 'nou', 'n']:
             return False
         else:
             print("Sorry, but that's an invalid input. Please try again.")
@@ -56,7 +56,7 @@ def main():
     all_answers["Name"] = name
 
     print(f"Hi, {name}! This program aims to help you find the next big meme-able word. Would you like to give it a try?")
-    try_program = get_yes_no_input("(yes/no): ")
+    try_program = get_yes_no_input("Would you like to give it a try? (yes/no): ")
     all_answers["Try Program"] = "yes" if try_program else "no"
 
     if not try_program:
@@ -125,7 +125,6 @@ def main():
         "The {} was awarded first place.",
         "Let's {} this puzzle together.",
         "The {} was a hidden gem.",
-        "I {} my family.",
         "How do you plan to {} this task?",
         "The {} played all night long.",
         "Do you think you can {} in this competition?",
@@ -152,14 +151,14 @@ def main():
         print(f"Here is your sentence: {sentence}")
 
         # Asking if the user wanna see the word in another sentence
-        another_sentence = get_yes_no_input("Would you like to see it in another sentence? (yes/no) ")
+        another_sentence = get_yes_no_input("Would you like to see it in another sentence? (yes/no): ")
         if not another_sentence:
             break
 
     all_answers["Generated Sentence"] = sentence
 
     # Asking the user if they wanna take a short survey
-    take_survey = get_yes_no_input("Would you like to take a short survey? (yes/no) ")
+    take_survey = get_yes_no_input("Would you like to take a short survey? (yes/no): ")
     all_answers["Take Survey"] = "yes" if take_survey else "no"
 
     if take_survey:
@@ -167,14 +166,14 @@ def main():
         all_answers.update(survey_answers)
 
         # Thanking the user and asking if they wanna save their answers
-        print("Thank you so much for your time! Would you like to save your answers? (yes/no)")
-        save_answers = get_yes_no_input().strip().lower()
+        
+        save_answers = get_yes_no_input("Would you like to save your answers? (yes/no): ")
         if save_answers:
             save_survey(all_answers)
         else:
             print("Thank you! Your answers have not been saved.")
     else:
-        print("Thank you! Have a grape day.")
+        print("Thank you! Have a great day.")
 
 if __name__ == "__main__":
     main()
