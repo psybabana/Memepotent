@@ -55,7 +55,7 @@ def main():
     name = input("Your Name: ")
     all_answers["Name"] = name
 
-    print(f"Hi, {name}! This program aims to help you find the next big meme-able word. Would you like to give it a try?")
+    print(f"Hi, {name}! This program aims to help you find the next big meme-able word.")
     try_program = get_yes_no_input("Would you like to give it a try? (yes/no): ")
     all_answers["Try Program"] = "yes" if try_program else "no"
 
@@ -145,7 +145,7 @@ def main():
 
     while True:
         # Selecting a random sentence and formatting it with the selected word
-        sentence = random.choice(sentences).format(selected_word)
+        sentence = '\n\t"' + random.choice(sentences).format(selected_word) + '"'
 
         # Printing the sentence with the selected word
         print(f"Here is your sentence: {sentence}")
