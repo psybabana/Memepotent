@@ -48,6 +48,13 @@ def get_yes_no_input(prompt):
         else:
             print("Sorry, but that's an invalid input. Please try again.")
 
+def get_number_input(prompt):
+    while True:
+        try:
+            return int(input(prompt))
+        except ValueError:
+            print("Please input a number!")
+
 def main():
     all_answers = {}
 
@@ -64,11 +71,11 @@ def main():
         return
 
     # Asking the user for the number of syllables per word
-    num_syllables = int(input("How many syllables per word? "))
+    num_syllables = get_number_input("How many syllables per word? ")
     all_answers["Number of syllables per Word"] = num_syllables
     
     # Asking the user for the number of words to generate
-    num_words = int(input("How many words would you like to generate? "))
+    num_words = get_number_input("How many words would you like to generate? ")
     all_answers["Number of words to Generate"] = num_words
     
     # Generating the words
@@ -79,7 +86,7 @@ def main():
         print(f"Word {i}: {word}")
 
     # Asking the user to select a word from the list
-    word_choice = int(input(f"Which word (1-{num_words}) would you like to use in a sentence? ")) - 1
+    word_choice = get_number_input(f"Which word (1-{num_words}) would you like to use in a sentence? ") - 1
     selected_word = words[word_choice]
     all_answers["Selected Word"] = selected_word
 
@@ -166,7 +173,6 @@ def main():
         all_answers.update(survey_answers)
 
         # Thanking the user and asking if they wanna save their answers
-        
         save_answers = get_yes_no_input("Thank you so much for your time! Would you like to save your answers? (yes/no): ")
         if save_answers:
             save_survey(all_answers)
@@ -177,4 +183,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
