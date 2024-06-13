@@ -53,7 +53,7 @@ def get_number_input(prompt):
         try:
             return int(input(prompt))
         except ValueError:
-            print("Please input a number!")
+            print("Please input a number.")
 
 def main():
     all_answers = {}
@@ -89,6 +89,13 @@ def main():
     word_choice = get_number_input(f"Which word (1-{num_words}) would you like to use in a sentence? ") - 1
     selected_word = words[word_choice]
     all_answers["Selected Word"] = selected_word
+
+    # Showing the selected word and asking if the user wants to tweak it
+    print(f"You chose the word '{selected_word}'.")
+    tweak_word = get_yes_no_input("Would you like to tweak it? (yes/no): ")
+    if tweak_word:
+        selected_word = input("Enter your tweaked word: ")
+        all_answers["Tweaked Word"] = selected_word
 
     # List of TOTALLY random sentences
     sentences = [
