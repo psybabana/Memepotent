@@ -30,7 +30,7 @@ def survey():
     
     return answers
 
-def save_survey(all_answers, file_name="Memepotent Research Survey Answers.csv"):
+def save_survey(all_answers, file_name="Memepotent Answers.csv"):
     with open(file_name, mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Question", "Answer"])
